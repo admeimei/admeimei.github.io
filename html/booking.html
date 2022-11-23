@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/vue.global.js"></script>
+    <script src="../js/script.js"></script>
+    <link rel="stylesheet" href="../style/booking_style.css">
+    <link rel="stylesheet" href="../style/sweetalert2.min.css">
+    <script src="../js/sweetalert2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <title>Booking</title>
+</head>
+<body>
+    <header>
+        <div class="CurtainMenu">
+    
+             <!--Icon and Tagline-->
+             <div class="logo-tagline">
+             <div class="logo">
+                 <img src="../images/p4.jpg" class="img-fluid" style="width:75px;" />
+             </div>
+             <div class="tagline">Extension
+             </div>
+             </div>
+             
+             <!--Desktop horizontal-menu-->
+             <div class="desktop-menu">
+             <div class="horizontal-nav">
+                 <ul>
+                 <li><a href="../index.html">HOME</a></li>
+                 <li class="active"><a href="../html/booking.html">Booking</a></li>
+                 <li><a href="../html/faq.html">FAQ</a></li>
+                 <li><a href="../rs/research.doc">RESEARCH</a></li>	
+                 <li><a href="../html/extension.html">Advanced JS</a></li>
+                 </ul>
+             </div>
+             </div>
+             
+             <!--Curtain Menu Icon-->
+             <p class="menu-icon-style" onclick="openNav()">≡</p>
+         </div>
+         
+         <!--Hide the curtain menu as default when loading the page-->
+         <nav id="curtain-nav">
+             <!--Add a close button (X) hyperlink on the top left corner-->
+             <a href="javascript:void(0)" class="nav-close-button" onclick="closeNav()">❌</a>
+             <div class="curtain-nav-content">
+             <ul>
+                 <li><a href="../index.html">HOME</a></li>
+                 <li class="active"><a href="../html/booking.html">Booking</a></li>
+                 <li><a href="../html/faq.html">FAQ</a></li>
+                 <li><a href="../rs/research.doc">RESEARCH</a></li>	
+                 <li ><a href="../html/extension.html">Advanced JS</a></li>
+             </ul>
+             </div>
+         </nav>
+         <script>
+            function openNav() {
+                document.getElementById("curtain-nav").style.width = "50%";			
+            }
+    
+            function closeNav() {
+                document.getElementById("curtain-nav").style.width = "0%";			
+            }
+         </script>
+    </header>
+    <main>
+        <div id="input-inf-table" class="form-layout">
+            <form id="form1"></form>
+            <section class="customerDetails">
+                <h2 style="width: 80%;height: 40px">Customer Details</h2>
+                <fieldset style="width: 73%;height: 60px;display: flex">
+                    <legend>
+                        Customer Type<span style="color: red"> *</span>
+                    </legend>
+                    <div style="height: 100%;width: 90px">
+                        <label for="select-c">Consumer</label>
+                        <label for="select-b">Business</label>
+                    </div>
+                    <div style="height: 100%;width: 80%">
+                        <input type="radio" name="Customer-Type" id="select-c" value="Consumer" form="form1"
+                            required="required"  checked><br>
+                        <input type="radio" name="Customer-Type" id="select-b" value="Business" form="form1"
+                            required="required" >
+                    </div>
+                </fieldset>
+                <div class="tit">Title:<span>*</span></div>
+                <div class="inp">
+                    <select class="inp-box" name="tit" id="tit" onchange="selectcolorchange()" form="form1">
+                        <option selected>Please Select</option>
+                        <option>Mr</option>
+                        <option>Mrs</option>
+                        <option>Ms</option>
+                        <option>Miss</option>
+                        <option>Dr</option>
+                    </select>
+                </div>
+                <div class="tit">First Name:<span> *</span></div>
+                <div class="inp"><input type="text" name="FN" class="inp-box" value="" onchange="vaildinput()" required="required"
+                                        form="form1" id="FN"></div>
+                <div class="tit">Last Name:<span> *</span></div>
+                <div class="inp"><input type="text" name="LN" class="inp-box" onchange="vaildinput()" required="required"
+                                        form="form1" id="LN"></div>
+                <div class="tit">Street:<span> *</span></div>
+                <div class="inp"><input type="text" name="St" class="inp-box" form="form1" required="required" id="St"></div>
+                <div class="tit">Suburb:</div>
+                <div class="inp"><input type="text" name="Su" class="inp-box" form="form1" id="Su"></div>
+                <div class="tit">City:<span> *</span></div>
+                <div class="inp"><input type="text" name="Ci" class="inp-box" form="form1" required="required" id="Ci"></div>
+                <div class="tit">Post Code:</div>
+                <div class="inp"><input type="text" name="PoCo" class="inp-box" onchange="vaildinput()" form="form1" id="PoCo">
+                </div>
+                <div class="tit">Phone Number:<span> *</span></div>
+                <div class="inp"><input type="text" name="PN" class="inp-box" onchange="vaildinput()" form="form1"
+                                        required="required" id="PN"></div>
+                <div class="tit">Email:<span> *</span></div>
+                <div class="inp"><input type="text" name="Em" class="inp-box" onchange="vaildinput()" form="form1"
+                                        required="required" id="Em"></div>
+
+            </section>
+            <section class="repairDetails">
+                    <h2 style="width: 80%;height: 40px">Repair Details</h2>
+                    <div class="tit">Purchase Date:<span> *</span></div>
+                    <div class="inp"><input type="date" name="PD" max="" class="inp-box" id="PD" form="form1" required="required"
+                                            onchange="PDchange()"></div>
+                    <div class="tit">Repair Date:<span> *</span></div>
+                    <div class="inp"><input type="datetime-local" class="inp-box" disabled="false" name="RD" id="RD" form="form1"
+                                            required="required" onchange="RDchange()"></div>
+                    <fieldset style="width: 73%;height: 50px;display: flex">
+                        <legend>
+                            Under Warrantly
+                        </legend>
+                        <div style="height: 100%;width: 82px">
+                            Warrantly:
+                        </div>
+                        <div style="height: 100%;width: 80%">
+                            <input type="checkbox" name="Warrantly" disabled="disabled" form="form1"
+                                onchange="Warrantlychange()" id="Warrantly">
+                        </div>
+                    </fieldset>
+                    <div class="tit">Serial Number:<span> *</span></div>
+                    <div class="inp"><input type="text" name="SN" class="inp-box" form="form1" required="required"
+                                            onchange="vaildinput()" id="SN"></div>
+                    <div class="tit">Make:<span> *</span></div>
+                    <div class="inp">
+                        <select name="make" class="inp-box" id="make" form="form1" onchange="selectcolorchange()">
+                            <option>Please Select</option>
+                            <option>Dell</option>
+                            <option>Apple</option>
+                            <option>HP</option>
+                            <option>Acer</option>
+                            <option>Lenovo</option>
+                            <option>Toshiba</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="tit">Model Number:</div>
+                    <div class="inp"><input type="text" name="MN" class="inp-box" form="form1" id="MN"></div>
+                    <div class="tit">Fault Category:<span> *</span></div>
+                    <div class="inp">
+                        <select name="FC" class="inp-box" id="FC" form="form1" onchange="selectcolorchange()">
+                            <option>Please Select</option>
+                            <option>Battery</option>
+                            <option>Charging</option>
+                            <option>Screen</option>
+                            <option>SD-storage</option>
+                            <option>Memory</option>
+                            <option>Software</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="tit">Description:<span> *</span></div>
+                    <div class="inp" style="height: 150px"><textarea name="Desc" id="Desc" class="inp-box" style="height: 130px"
+                                                                    form="form1" cols="30" rows="10"></textarea></div>
+            </section>
+            <section class="courtesyPhone">
+                <div id="Courtesy">
+                    <h2 >Courtesy laptop</h2>
+                    <div class="tit">ItemType:</div>
+                    <div class="inp">
+                        <select class="inp-box" name="device-list" id="device-list">
+                            <option value="HP" id="HP Pavilion">HP Pavilion </option>
+                            <option value="Ol" id="Other laptops">Other laptops</option>
+                            <option value="Cg" id="Chargers">Chargers</option>
+                        </select>
+                    </div>
+                    <div id="add_button">
+                        <button class="btn" type="button" id="btn_add" form="form1"  >Add</button>
+                    </div>
+                    <div id="Courtesy-Table-Space">
+                        <table id="Courtesy-Table" style="width: 100%">
+                            <thead>
+                            <td style="width: 55%;height: 30px;text-align: center">Item</td>
+                            <td style="width: 45%;height: 30px;text-align: center">Cost</td>
+                            <td style="width: 45%;height: 30px;text-align: center" >Action</td>
+                            </thead>
+
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <section class="costSection">
+                    <h2 style="width: 80%;height: 40px">Cost</h2>
+                    <div class="tit">Bond:</div>
+                    <div class="inp"><input type="text" disabled="disabled" form="form1" class="inp-box" name="Bond" id="Bond">
+                    </div>
+                    <div class="tit">Service Fee:</div>
+                    <div class="inp"><input type="text" disabled="disabled" form="form1" name="SF" class="inp-box" id="SF">
+                    </div>
+                    <div class="tit">Total:</div>
+                    <div class="inp"><input type="text" disabled="disabled" form="form1" name="Total" class="inp-box"
+                                            id="Total">
+                    </div>
+                    <div class="tit">GST:</div>
+                    <div class="inp"><input type="text" disabled="disabled" form="form1" name="GST" class="inp-box" id="GST">
+                    </div>
+                    <div class="tit">Total(+GST):</div>
+                    <div class="inp"><input type="text" disabled="disabled" form="form1" name="Total_with_GST" class="inp-box"
+                                            id="Total_with_GST"></div>
+            </section>
+            <section class="buttonSection" >
+                <div id="button-area">
+                    <button  style="height:4em; width:10em;" class="btn" id="btn_submit" type="button" onclick="submitall()">Submit</button>
+                    <button  style="height:4em; width:10em;" class="btn" id="btn_reset" type="button" onclick="resetall()">Reset</button>
+                    <button  style="height:4em; width:10em;" class="btn" id="btn_faq" type="button" onclick="window.location.href='../html/faq.html'">FAQ</button>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <p>Advanced Web Design, Copyright &copy; 2020</p>
+      </footer>
+</body>
+<script src="../js/booking_page_script.js"></script>
+</html>
